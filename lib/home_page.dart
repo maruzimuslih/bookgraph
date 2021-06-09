@@ -1,3 +1,4 @@
+import 'package:bookgraph/detail_page.dart';
 import 'package:bookgraph/login_page.dart';
 import 'package:bookgraph/model/books.dart';
 import 'package:bookgraph/model/daily_goals.dart';
@@ -407,65 +408,68 @@ class CurrentlyReadingList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(     
-      margin: EdgeInsets.only(right: 20), 
-      width: 270,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
-        boxShadow: [BoxShadow(
-          offset: Offset(0, 10),
-          blurRadius: 20,
-          color: Colors.cyan[900].withOpacity(.3)
-        )]
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(left: 20, right: 10, top: 10, bottom: 5),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(book.title,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontWeight: FontWeight.bold)
-                      ),
-                      Text(
-                        book.author,
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      SizedBox(height: 15),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Text(
-                          "Page ${book.currentPage} of ${book.totalPage}",
-                          style: TextStyle(fontSize: 10, color: Colors.grey),
+    return InkWell(
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage())),
+      child: Container(     
+        margin: EdgeInsets.only(right: 20), 
+        width: 270,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+          boxShadow: [BoxShadow(
+            offset: Offset(0, 10),
+            blurRadius: 20,
+            color: Colors.cyan[900].withOpacity(.3)
+          )]
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(left: 20, right: 10, top: 10, bottom: 5),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(book.title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontWeight: FontWeight.bold)
                         ),
-                      )
-                    ],
+                        Text(
+                          book.author,
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                        SizedBox(height: 15),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: Text(
+                            "Page ${book.currentPage} of ${book.totalPage}",
+                            style: TextStyle(fontSize: 10, color: Colors.grey),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                Image.asset(book.imageAsset, width: 70)
-              ],
+                  Image.asset(book.imageAsset, width: 70)
+                ],
+              ),
             ),
-          ),
-          ClipRRect(
-            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
-            child: LinearProgressIndicator(
-              value: book.currentPage / book.totalPage,
-              minHeight: 6,
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.cyan[900]),
-              backgroundColor: Colors.cyan[700],
+            ClipRRect(
+              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
+              child: LinearProgressIndicator(
+                value: book.currentPage / book.totalPage,
+                minHeight: 6,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.cyan[900]),
+                backgroundColor: Colors.cyan[700],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

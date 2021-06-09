@@ -17,9 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   void login() async{          
     for (var i = 0; i < userList.length; i++) {
       if (_usernameController.text == userList[i].username && _passwordController.text == userList[i].password) {        
-        await Navigator.push(context, MaterialPageRoute(
-          builder: (context) => HomePage(user: userList[i])
-        ));
+        await Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage(user: userList[i],)));
         isLogin = true;        
       }
     }    
