@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Book{
   String title;
   String author;
@@ -8,11 +6,11 @@ class Book{
   int currentPage;
 
   Book({
-    @required this.title,
-    @required this.author,
-    @required this.imageAsset,
-    @required this.totalPage,
-    @required this.currentPage,
+    required this.title,
+    required this.author,
+    required this.imageAsset,
+    required this.totalPage,
+    required this.currentPage,
   });
 }
 

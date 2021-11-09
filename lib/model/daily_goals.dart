@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
-
 class Goals {
   final DateTime date;
   final int pages;
 
   Goals({
-    @required this.date, 
-    @required this.pages
+    required this.date, 
+    required this.pages
   });
 }
 

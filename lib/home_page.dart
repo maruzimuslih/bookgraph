@@ -7,26 +7,25 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'dart:math';
 
-// ignore: must_be_immutable
 class HomePage extends StatefulWidget {
   final User user;
 
-  HomePage({this.user});
+  HomePage({required this.user});
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
-  AnimationController progressController;
-  Animation<double> animation;
+  late AnimationController progressController;
+  late Animation<double> animation;
   DateTime today = DateTime.now();
   double dailyGoal = 30;
   double currentProgress = 17;
 
   List<charts.Series<Goals, DateTime>> seriesLineData = [
     charts.Series(
-      colorFn: (__, _) => charts.ColorUtil.fromDartColor(Colors.cyan[700]),
+      colorFn: (__, _) => charts.ColorUtil.fromDartColor(Colors.cyan[700]!),
       id: 'Daily Goals',
       data: weeklyProgress,
       domainFn: (Goals goals, _) => goals.date,
@@ -48,6 +47,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.cyan[900],
         leading: Padding(
           padding: const EdgeInsets.all(12.0),
           child: CircleAvatar(
@@ -179,7 +179,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                     boxShadow: [BoxShadow(
                       offset: Offset(0, 10),
                       blurRadius: 20,
-                      color: Colors.cyan[900].withOpacity(.3)
+                      color: Colors.cyan[900]!.withOpacity(.3)
                     )]
                   ),
                   child: Column(
@@ -322,7 +322,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                     boxShadow: [BoxShadow(
                       offset: Offset(0, 10),
                       blurRadius: 20,
-                      color: Colors.cyan[900].withOpacity(.3)
+                      color: Colors.cyan[900]!.withOpacity(.3)
                     )
                   ]),
                   child: Padding(
@@ -370,7 +370,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                                   child: LinearProgressIndicator(                                      
                                     value: completedBooks.toDouble() / yearGoal,
                                     minHeight: 12,
-                                    valueColor: AlwaysStoppedAnimation<Color>(Colors.cyan[900]),
+                                    valueColor: AlwaysStoppedAnimation<Color>(Colors.cyan[900]!),
                                     backgroundColor: Colors.cyan[700],
                                   ),
                                 ),
@@ -403,7 +403,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 class CurrentlyReadingList extends StatelessWidget {
   final Book book;
 
-  CurrentlyReadingList({this.book});
+  CurrentlyReadingList({required this.book});
 
   @override
   Widget build(BuildContext context) {
@@ -416,7 +416,7 @@ class CurrentlyReadingList extends StatelessWidget {
         boxShadow: [BoxShadow(
           offset: Offset(0, 10),
           blurRadius: 20,
-          color: Colors.cyan[900].withOpacity(.3)
+          color: Colors.cyan[900]!.withOpacity(.3)
         )]
       ),
       child: Column(
@@ -461,7 +461,7 @@ class CurrentlyReadingList extends StatelessWidget {
             child: LinearProgressIndicator(
               value: book.currentPage / book.totalPage,
               minHeight: 6,
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.cyan[900]),
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.cyan[900]!),
               backgroundColor: Colors.cyan[700],
             ),
           ),
@@ -486,7 +486,7 @@ class CircleProgress extends CustomPainter{
 
     Paint completeArc = Paint()
       ..strokeWidth = 8
-      ..color = Colors.cyan[700]
+      ..color = Colors.cyan[700]!
       ..style = PaintingStyle.stroke
       ..strokeCap  = StrokeCap.round;
 

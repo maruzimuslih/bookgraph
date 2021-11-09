@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class User{
   String username;
   String password;
@@ -8,11 +6,11 @@ class User{
   String avatar;
 
   User({
-    @required this.username,
-    @required this.password,
-    @required this.fullName,
-    @required this.nickName,
-    @required this.avatar,
+    required this.username,
+    required this.password,
+    required this.fullName,
+    required this.nickName,
+    required this.avatar,
   });
 }
 
